@@ -18,6 +18,7 @@ const eslintConfig = [
     extends: ['next', 'next/core-web-vitals', 'next/typescript', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
     rules: {
       'react/no-unescaped-entities': 'warn',
+      'react/react-in-jsx-scope': 'off',
       '@next/next/no-page-custom-font': 'warn',
       '@typescript-eslint/no-unused-expressions': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
