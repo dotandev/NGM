@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Mic, Clock, Users, Calendar } from "lucide-react"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import { Mic, Clock, Users, Calendar } from "lucide-react";
+import Link from "next/link";
 
 export default function StatsSection() {
   const stats = [
@@ -10,7 +10,7 @@ export default function StatsSection() {
     { icon: Clock, number: "72", label: "Hours" },
     { icon: Users, number: "10", label: "Workshop" },
     { icon: Calendar, number: "03", label: "Days" },
-  ]
+  ];
 
   return (
     <section style={{ backgroundColor: "#EAFFF3", padding: "80px 24px" }}>
@@ -30,7 +30,13 @@ export default function StatsSection() {
             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1px",
+            }}
+          >
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -53,20 +59,20 @@ export default function StatsSection() {
                     width: "64px",
                     height: "64px",
                     borderRadius: "50%",
-                    border: "2px solid rgb(34, 197, 94)",
+                    border: "2px solid #0DA04C",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <stat.icon size={24} color="rgb(34, 197, 94)" />
+                  <stat.icon size={24} color="#0DA04C" />
                 </div>
                 <div>
                   <div
                     style={{
                       fontSize: "36px",
                       fontWeight: "bold",
-                      color: "rgb(34, 197, 94)",
+                      color: "#0DA04C",
                       marginBottom: "4px",
                     }}
                   >
@@ -109,28 +115,31 @@ export default function StatsSection() {
             </h2>
 
             <div
-              style={{
-                backgroundColor: "#C4F82A",
-                padding: "24px",
-                borderRadius: "12px",
-              }}
+              className="py-6 px-[21.45px] bg-[#FFFFFF26] border-[2.34px] border-[#FFFFFF33] rounded-lg"
+              // style={{
+              //   backgroundColor: "#0DA04C",
+              //   padding: "24px",
+              //   borderRadius: "12px",
+              // }}
             >
               <p
                 style={{
                   fontSize: "16px",
-                  color: "rgb(34, 197, 94)",
+                  color: "#fff",
                   lineHeight: "1.6",
                   margin: "0 0 20px 0",
                 }}
               >
-               Join these discussions for just 7500.
+                Join these discussions for just 7500.
               </p>
 
               <Link
-                href="/about"
+                href="https://bitooqoh.com/explore/ngm-conf-4.0"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   backgroundColor: "white",
-                  color: "rgb(34, 197, 94)",
+                  color: "#0DA04C",
                   padding: "12px 24px",
                   borderRadius: "25px",
                   textDecoration: "none",
@@ -148,5 +157,5 @@ export default function StatsSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

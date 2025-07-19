@@ -1,23 +1,24 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import NgmLogo from "./ngm-logo";
 
 interface LoadingScreenProps {
-  onComplete: () => void
+  onComplete: () => void;
 }
 
 export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(false)
-      setTimeout(onComplete, 800)
-    }, 2000)
+      setIsVisible(false);
+      setTimeout(onComplete, 800);
+    }, 2000);
 
-    return () => clearTimeout(timer)
-  }, [onComplete])
+    return () => clearTimeout(timer);
+  }, [onComplete]);
 
   return (
     <motion.div
@@ -47,7 +48,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           gap: "12px",
         }}
       >
-        <div
+        {/* <div
           style={{
             width: "48px",
             height: "48px",
@@ -59,9 +60,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           }}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="rgb(34, 197, 94)" />
-            <path d="M2 17L12 22L22 17" stroke="rgb(34, 197, 94)" strokeWidth="2" />
-            <path d="M2 12L12 17L22 12" stroke="rgb(34, 197, 94)" strokeWidth="2" />
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#0DA04C" />
+            <path d="M2 17L12 22L22 17" stroke="#0DA04C" strokeWidth="2" />
+            <path d="M2 12L12 17L22 12" stroke="#0DA04C" strokeWidth="2" />
           </svg>
         </div>
         <h1
@@ -74,8 +75,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           }}
         >
           NGM Conference
-        </h1>
+        </h1> */}
+        <NgmLogo style={{ width: "90px", height: "160px" }} isLight />
       </motion.div>
     </motion.div>
-  )
+  );
 }

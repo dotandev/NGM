@@ -1,38 +1,45 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import { X, Plus, Minus, Trash2 } from "lucide-react"
-import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Plus, Minus, Trash2 } from "lucide-react";
+import { useState } from "react";
 
 interface CartItem {
-  id: string
-  name: string
-  price: number
-  quantity: number
-  type: string
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  type: string;
 }
 
 interface ShoppingCartProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const updateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity === 0) {
-      setCartItems((items) => items.filter((item) => item.id !== id))
+      setCartItems((items) => items.filter((item) => item.id !== id));
     } else {
-      setCartItems((items) => items.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item)))
+      setCartItems((items) =>
+        items.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        )
+      );
     }
-  }
+  };
 
   const removeItem = (id: string) => {
-    setCartItems((items) => items.filter((item) => item.id !== id))
-  }
+    setCartItems((items) => items.filter((item) => item.id !== id));
+  };
 
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <AnimatePresence>
@@ -60,7 +67,11 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
+            transition={{
+              type: "tween",
+              ease: [0.22, 1, 0.36, 1],
+              duration: 0.4,
+            }}
             style={{
               position: "fixed",
               top: 0,
@@ -88,7 +99,7 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                 style={{
                   fontSize: "24px",
                   fontWeight: "bold",
-                  color: "rgb(34, 197, 94)",
+                  color: "#0DA04C",
                   margin: 0,
                 }}
               >
@@ -105,10 +116,10 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                   transition: "background-color 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#f5f5f5"
+                  e.currentTarget.style.backgroundColor = "#f5f5f5";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent"
+                  e.currentTarget.style.backgroundColor = "transparent";
                 }}
               >
                 <X size={24} color="#666" />
@@ -148,7 +159,7 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                           style={{
                             fontSize: "16px",
                             fontWeight: "600",
-                            color: "rgb(34, 197, 94)",
+                            color: "#0DA04C",
                             margin: "0 0 4px 0",
                           }}
                         >
@@ -167,7 +178,7 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                           style={{
                             fontSize: "18px",
                             fontWeight: "bold",
-                            color: "rgb(34, 197, 94)",
+                            color: "#0DA04C",
                             margin: 0,
                           }}
                         >
@@ -175,9 +186,17 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                         </p>
                       </div>
 
-                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                        }}
+                      >
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                           style={{
                             width: "32px",
                             height: "32px",
@@ -205,7 +224,9 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                         </span>
 
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           style={{
                             width: "32px",
                             height: "32px",
@@ -262,12 +283,14 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                     marginBottom: "16px",
                   }}
                 >
-                  <span style={{ fontSize: "18px", fontWeight: "600" }}>Total:</span>
+                  <span style={{ fontSize: "18px", fontWeight: "600" }}>
+                    Total:
+                  </span>
                   <span
                     style={{
                       fontSize: "24px",
                       fontWeight: "bold",
-                      color: "rgb(34, 197, 94)",
+                      color: "#0DA04C",
                     }}
                   >
                     ${total}
@@ -277,7 +300,7 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                 <button
                   style={{
                     width: "100%",
-                    backgroundColor: "rgb(34, 197, 94)",
+                    backgroundColor: "#0DA04C",
                     color: "white",
                     border: "none",
                     padding: "16px",
@@ -288,10 +311,10 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
                     transition: "background-color 0.2s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(21, 128, 61)"
+                    e.currentTarget.style.backgroundColor = "rgb(21, 128, 61)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(34, 197, 94)"
+                    e.currentTarget.style.backgroundColor = "#0DA04C";
                   }}
                 >
                   Checkout
@@ -302,5 +325,5 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
         </>
       )}
     </AnimatePresence>
-  )
+  );
 }

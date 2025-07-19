@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AgendaPage() {
   const scheduleData = [
@@ -37,10 +37,16 @@ export default function AgendaPage() {
         image: "/placeholder.svg?height=60&width=60",
       },
     },
-  ]
+  ];
 
   return (
-    <main style={{ backgroundColor: "rgb(22 163 74)", minHeight: "100vh", padding: "80px 24px" }}>
+    <main
+      style={{
+        backgroundColor: "#fff",
+        minHeight: "100vh",
+        padding: "80px 24px",
+      }}
+    >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -52,7 +58,7 @@ export default function AgendaPage() {
             style={{
               fontSize: "72px",
               fontWeight: "bold",
-              color: "#C4F82A",
+              color: "#0DA04C",
               marginBottom: "32px",
             }}
           >
@@ -74,12 +80,23 @@ export default function AgendaPage() {
                 textAlign: "center",
               }}
             >
-              <h3 style={{ fontSize: "24px", fontWeight: "bold", color: "rgb(34, 197, 94)", margin: 0 }}>DAY 01</h3>
-              <p style={{ color: "#666", margin: "8px 0 0 0" }}>12 October - Sunday</p>
+              <h3
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "#0DA04C",
+                  margin: 0,
+                }}
+              >
+                DAY 01
+              </h3>
+              <p style={{ color: "#666", margin: "8px 0 0 0" }}>
+                12 October - Sunday
+              </p>
             </div>
             {/* <div
               style={{
-                backgroundColor: "rgb(34, 197, 94)",
+                backgroundColor: "#0DA04C",
                 padding: "24px",
                 textAlign: "center",
               }}
@@ -89,7 +106,7 @@ export default function AgendaPage() {
             </div> */}
             {/* <div
               style={{
-                backgroundColor: "rgb(34, 197, 94)",
+                backgroundColor: "#0DA04C",
                 padding: "24px",
                 textAlign: "center",
                 border: "2px solid #C4F82A",
@@ -110,7 +127,7 @@ export default function AgendaPage() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               style={{
-                backgroundColor: index === 2 || index === 3 ? "rgb(34, 197, 94)" : "rgba(34, 197, 94, 0.1)",
+                backgroundColor: "#0DA04C",
                 border: "1px solid rgba(196, 248, 42, 0.3)",
                 padding: "32px",
                 display: "grid",
@@ -124,7 +141,7 @@ export default function AgendaPage() {
                   style={{
                     fontSize: "24px",
                     fontWeight: "bold",
-                    color: index === 2 || index === 3 ? "#C4F82A" : "white",
+                    color: "white",
                   }}
                 >
                   {item.time}
@@ -136,7 +153,7 @@ export default function AgendaPage() {
                   style={{
                     fontSize: "24px",
                     fontWeight: "bold",
-                    color: index === 2 || index === 3 ? "#C4F82A" : "white",
+                    color: "#fff",
                     margin: "0 0 8px 0",
                   }}
                 >
@@ -144,7 +161,7 @@ export default function AgendaPage() {
                 </h3>
                 <p
                   style={{
-                    color: index === 2 || index === 3 ? "rgba(196, 248, 42, 0.8)" : "rgba(255, 255, 255, 0.8)",
+                    color: "rgba(255, 255, 255, 0.8)",
                     margin: 0,
                     fontSize: "16px",
                   }}
@@ -154,7 +171,9 @@ export default function AgendaPage() {
               </div>
 
               {item.speaker && (
-                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "16px" }}
+                >
                   <Image
                     src={item.speaker.image || "/placeholder.svg"}
                     alt={item.speaker.name}
@@ -188,5 +207,5 @@ export default function AgendaPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

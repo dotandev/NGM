@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { Facebook, Linkedin, Instagram, Twitter } from "lucide-react"
-import { useState } from "react"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
+import { useState } from "react";
+import NgmLogo from "./ngm-logo";
 
 export default function Footer() {
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
 
   const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle newsletter subscription
-    console.log("Subscribing:", email)
-    setEmail("")
-  }
+    console.log("Subscribing:", email);
+    setEmail("");
+  };
 
   return (
     <footer style={{ backgroundColor: "#EAFFF3", padding: "80px 24px 40px" }}>
@@ -53,7 +54,7 @@ export default function Footer() {
               style={{
                 fontSize: "48px",
                 fontWeight: "bold",
-                color: "#C4F82A",
+                color: "#FFF",
                 marginBottom: "16px",
                 lineHeight: "1.2",
               }}
@@ -69,15 +70,19 @@ export default function Footer() {
                 margin: "0 auto 32px",
               }}
             >
-             Join these discussions for just 7500.
+              Join these discussions for just 7500.
             </p>
 
-            <div style={{ display: "flex", gap: "16px", justifyContent: "center" }}>
+            <div
+              style={{ display: "flex", gap: "16px", justifyContent: "center" }}
+            >
               <Link
-                href="/tickets"
+                href="https://bitooqoh.com/explore/ngm-conf-4.0"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
-                  backgroundColor: "#C4F82A",
-                  color: "rgb(34, 197, 94)",
+                  backgroundColor: "#0DA04C",
+                  color: "#fff",
                   padding: "16px 32px",
                   borderRadius: "25px",
                   textDecoration: "none",
@@ -86,20 +91,20 @@ export default function Footer() {
                   transition: "transform 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)"
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)"
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                Buy Tickets
+                Register Now
               </Link>
 
               <Link
                 href="/sponsor"
                 style={{
                   backgroundColor: "white",
-                  color: "rgb(34, 197, 94)",
+                  color: "#0DA04C",
                   padding: "16px 32px",
                   borderRadius: "25px",
                   textDecoration: "none",
@@ -108,10 +113,10 @@ export default function Footer() {
                   transition: "transform 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)"
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)"
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
                 Become Sponsor
@@ -124,7 +129,7 @@ export default function Footer() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1.5fr",
+            gridTemplateColumns: "1fr 1fr 1fr",
             gap: "64px",
             marginBottom: "48px",
           }}
@@ -141,24 +146,7 @@ export default function Footer() {
                 marginBottom: "24px",
               }}
             >
-              <div
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  backgroundColor: "rgb(15 25 144 / 1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#C4F82A" />
-                  <path d="M2 17L12 22L22 17" stroke="#C4F82A" strokeWidth="2" />
-                  <path d="M2 12L12 17L22 12" stroke="#C4F82A" strokeWidth="2" />
-                </svg>
-              </div>
-              <span style={{ fontSize: "28px", fontWeight: "bold", color: "rgb(15 25 144 / 1)" }}>NGM Conference</span>
+              <NgmLogo style={{ width: "90px", height: "130px" }} />
             </Link>
 
             <p
@@ -169,7 +157,8 @@ export default function Footer() {
                 marginBottom: "24px",
               }}
             >
-Join these discussions for just 7500.            </p>
+              Join these discussions for just 7500.{" "}
+            </p>
 
             <div style={{ display: "flex", gap: "12px" }}>
               {[Facebook, Linkedin, Instagram, Twitter].map((Icon, index) => (
@@ -189,12 +178,13 @@ Join these discussions for just 7500.            </p>
                     transition: "all 0.2s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(15 25 144 / 1)"
-                    e.currentTarget.style.color = "white"
+                    e.currentTarget.style.backgroundColor =
+                      "rgb(15 25 144 / 1)";
+                    e.currentTarget.style.color = "white";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "transparent"
-                    e.currentTarget.style.color = "rgb(15 25 144 / 1)"
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "rgb(15 25 144 / 1)";
                   }}
                 >
                   <Icon size={18} />
@@ -215,8 +205,10 @@ Join these discussions for just 7500.            </p>
             >
               Quick Links
             </h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {["Home", "Speakers", "Contact Us", "Blog", "Tickets"].map((link) => (
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            >
+              {["Home", "Speakers", "Contact Us"].map((link) => (
                 <Link
                   key={link}
                   href={`/${link.toLowerCase().replace(" ", "-")}`}
@@ -227,10 +219,10 @@ Join these discussions for just 7500.            </p>
                     transition: "color 0.2s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "rgb(15 25 144 / 1)"
+                    e.currentTarget.style.color = "rgb(15 25 144 / 1)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#666"
+                    e.currentTarget.style.color = "#666";
                   }}
                 >
                   {link}
@@ -240,7 +232,7 @@ Join these discussions for just 7500.            </p>
           </div>
 
           {/* Utility Pages */}
-          <div>
+          {/* <div>
             <h3
               style={{
                 fontSize: "20px",
@@ -251,29 +243,33 @@ Join these discussions for just 7500.            </p>
             >
               Utility Pages
             </h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {["Mentors", "Board Of Trustees", "Event Timeline"].map((link) => (
-                <Link
-                  key={link}
-                  href="#"
-                  style={{
-                    color: "#666",
-                    textDecoration: "none",
-                    fontSize: "16px",
-                    transition: "color 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "rgb(15 25 144 / 1)"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#666"
-                  }}
-                >
-                  {link}
-                </Link>
-              ))}
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            >
+              {["Mentors", "Board Of Trustees", "Event Timeline"].map(
+                (link) => (
+                  <Link
+                    key={link}
+                    href="#"
+                    style={{
+                      color: "#666",
+                      textDecoration: "none",
+                      fontSize: "16px",
+                      transition: "color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "rgb(15 25 144 / 1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "#666";
+                    }}
+                  >
+                    {link}
+                  </Link>
+                )
+              )}
             </div>
-          </div>
+          </div> */}
 
           {/* Newsletter */}
           <div>
@@ -295,59 +291,31 @@ Join these discussions for just 7500.            </p>
                 marginBottom: "24px",
               }}
             >
-Join these discussions for just 7500.            </p>
+              Get first hand news from us!{" "}
+            </p>
 
-            <form onSubmit={handleSubscribe} style={{ display: "flex", gap: "8px" }}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Your e mail"
-                required
-                style={{
-                  flex: 1,
-                  padding: "12px 16px",
-                  borderRadius: "25px",
-                  border: "2px solid #e5e5e5",
-                  fontSize: "16px",
-                  outline: "none",
-                  transition: "border-color 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "rgb(34, 197, 94)"
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "#e5e5e5"
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  backgroundColor: "rgb(34, 197, 94)",
-                  color: "white",
-                  border: "none",
-                  padding: "12px 24px",
-                  borderRadius: "25px",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(34, 197, 94)"
-                  e.currentTarget.style.transform = "translateY(-1px)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(15 25 144 / 1)"
-                  e.currentTarget.style.transform = "translateY(0)"
-                }}
-              >
-                Subscribe →
-              </button>
-            </form>
+            <button
+              type="submit"
+              style={{
+                height: "52px",
+                backgroundColor: "#0DA04C",
+                color: "white",
+                border: "none",
+                padding: "12px 24px",
+                borderRadius: "25px",
+                fontSize: "16px",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              Subscribe
+              <span>→</span>
+            </button>
           </div>
         </div>
 
@@ -360,10 +328,12 @@ Join these discussions for just 7500.            </p>
           }}
         >
           <p style={{ fontSize: "16px", color: "#666", margin: 0 }}>
-            <span style={{ fontWeight: "600" }}>Design & Developed by The NGM Technical Team.</span>
+            <span style={{ fontWeight: "600" }}>
+              Design & Developed by The NGM Technical Team.
+            </span>
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

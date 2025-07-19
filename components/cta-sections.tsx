@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import Link from "next/link";
 // import { useState } from "react"
 
 export default function CTASections() {
@@ -43,7 +43,7 @@ export default function CTASections() {
               style={{
                 fontSize: "48px",
                 fontWeight: "bold",
-                color: "rgb(34, 197, 94)",
+                color: "#0DA04C",
                 marginBottom: "32px",
                 lineHeight: "1.2",
               }}
@@ -55,7 +55,7 @@ export default function CTASections() {
               href="/tickets"
               style={{
                 backgroundColor: "white",
-                color: "rgb(34, 197, 94)",
+                color: "#0DA04C",
                 padding: "16px 32px",
                 borderRadius: "25px",
                 textDecoration: "none",
@@ -65,13 +65,13 @@ export default function CTASections() {
                 transition: "transform 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)"
+                e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)"
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              Buy Tickets
+              Register Now
             </Link>
           </motion.div>
 
@@ -82,7 +82,7 @@ export default function CTASections() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             style={{
-              backgroundColor: "rgb(34, 197, 94)",
+              backgroundColor: "#0DA04C",
               borderRadius: "16px",
               padding: "48px",
               textAlign: "center",
@@ -104,7 +104,7 @@ export default function CTASections() {
               href="/sponsor"
               style={{
                 backgroundColor: "#C4F82A",
-                color: "rgb(34, 197, 94)",
+                color: "#0DA04C",
                 padding: "16px 32px",
                 borderRadius: "25px",
                 textDecoration: "none",
@@ -114,10 +114,10 @@ export default function CTASections() {
                 transition: "transform 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)"
+                e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)"
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Become Sponsor
@@ -129,8 +129,7 @@ export default function CTASections() {
         {/* <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: */}
-
       </div>
     </section>
-  )
+  );
 }

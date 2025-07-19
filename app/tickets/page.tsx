@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Check } from "lucide-react"
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function TicketsPage() {
   const ticketTiers = [
@@ -9,7 +10,12 @@ export default function TicketsPage() {
       name: "REGULAR",
       // price: "$65",
       price: "5k Naira",
-      features: ["1 day event", "5 speaker", "interaction session", "lunch & coffee"],
+      features: [
+        "1 day event",
+        "5 speaker",
+        "interaction session",
+        "lunch & coffee",
+      ],
       // bgColor: "white",
       bgColor: "rgb(15 25 144 / 1)",
       textColor: "white",
@@ -19,7 +25,12 @@ export default function TicketsPage() {
       name: "PREMIUM",
       // price: "$95",
       price: "7.5k Naira",
-      features: ["2 day event", "10 speaker", "interaction session", "lunch & coffee"],
+      features: [
+        "2 day event",
+        "10 speaker",
+        "interaction session",
+        "lunch & coffee",
+      ],
       bgColor: "white",
       textColor: "rgb(15 25 144 / 1)",
       buttonColor: "rgb(15 25 144 / 1)",
@@ -28,15 +39,26 @@ export default function TicketsPage() {
       name: "VIP",
       // price: "$445",
       price: "9k Naira",
-      features: ["3 day event", "20 speaker", "interaction session", "lunch & coffee"],
+      features: [
+        "3 day event",
+        "20 speaker",
+        "interaction session",
+        "lunch & coffee",
+      ],
       bgColor: "rgb(15 25 144 / 1)",
       textColor: "white",
       buttonColor: "white",
     },
-  ]
+  ];
 
   return (
-    <main style={{ backgroundColor: "#EAFFF3", minHeight: "100vh", padding: "80px 24px" }}>
+    <main
+      style={{
+        backgroundColor: "#EAFFF3",
+        minHeight: "100vh",
+        padding: "80px 24px",
+      }}
+    >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -62,7 +84,8 @@ export default function TicketsPage() {
               margin: "0 auto",
               lineHeight: "1.6",
             }}
-          >Join these discussions for just 7500.
+          >
+            Join these discussions for just 7500.
           </p>
         </motion.div>
 
@@ -147,7 +170,10 @@ export default function TicketsPage() {
                     <span
                       style={{
                         fontSize: "16px",
-                        color: tier.name === "VIP" ? "rgba(196, 248, 42, 0.9)" : "#666",
+                        color:
+                          tier.name === "VIP" || tier.name === "REGULAR"
+                            ? "#EAFFF3"
+                            : "rgb(15 25 144 / 1)",
                       }}
                     >
                       {feature}
@@ -156,10 +182,16 @@ export default function TicketsPage() {
                 ))}
               </div>
 
-              <button
+              <Link
+                href="https://bitooqoh.com/explore/ngm-conf-4.0"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   backgroundColor: tier.buttonColor,
-                  color: tier.name === "VIP" ? "rgb(34, 197, 94)" : "rgb(34, 197, 94)",
+                  color:
+                    tier.name === "VIP" || tier.name === "REGULAR"
+                      ? "rgb(15 25 144 / 1)"
+                      : "#FFF",
                   border: "none",
                   padding: "16px 32px",
                   borderRadius: "25px",
@@ -167,21 +199,22 @@ export default function TicketsPage() {
                   fontWeight: "600",
                   cursor: "pointer",
                   width: "100%",
+                  display: "block",
                   transition: "transform 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)"
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)"
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                Add to Cart
-              </button>
+                Buy Tickets
+              </Link>
             </motion.div>
           ))}
         </div>
       </div>
     </main>
-  )
+  );
 }
