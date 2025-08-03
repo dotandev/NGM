@@ -5,21 +5,35 @@ import type React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
-import { useState } from "react";
-import NgmLogo from "./ngm-logo";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import NgmConfLogoBlue from "@/assets/ngm-conf-logo-blue.png";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Subscribing:", email);
-    setEmail("");
-  };
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Add event listener for resize
+    window.addEventListener("resize", checkIsMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   return (
-    <footer style={{ backgroundColor: "#EAFFF3", padding: "80px 24px 40px" }}>
+    <footer
+      style={{
+        backgroundColor: "#EAFFF3",
+        padding: isMobile ? "40px 16px 24px" : "80px 24px 40px",
+      }}
+    >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Newsletter CTA Section */}
         <motion.div
@@ -30,8 +44,8 @@ export default function Footer() {
           style={{
             backgroundColor: "rgb(15 25 144 / 1)",
             borderRadius: "16px",
-            padding: "64px",
-            marginBottom: "80px",
+            padding: isMobile ? "32px 20px" : "64px",
+            marginBottom: isMobile ? "40px" : "80px",
             position: "relative",
             overflow: "hidden",
           }}
@@ -52,7 +66,7 @@ export default function Footer() {
           <div style={{ position: "relative", textAlign: "center" }}>
             <h2
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "32px" : "48px",
                 fontWeight: "bold",
                 color: "#FFF",
                 marginBottom: "16px",
@@ -63,18 +77,24 @@ export default function Footer() {
             </h2>
             <p
               style={{
-                fontSize: "18px",
+                fontSize: isMobile ? "16px" : "18px",
                 color: "rgba(255, 255, 255, 0.9)",
-                marginBottom: "32px",
+                marginBottom: isMobile ? "24px" : "32px",
                 maxWidth: "500px",
-                margin: "0 auto 32px",
+                margin: isMobile ? "0 auto 24px" : "0 auto 32px",
               }}
             >
               Join these discussions for just 7500.
             </p>
 
             <div
-              style={{ display: "flex", gap: "16px", justifyContent: "center" }}
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: isMobile ? "12px" : "16px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <Link
                 href="https://bitooqoh.com/explore/ngm-conf-4.0"
@@ -83,12 +103,14 @@ export default function Footer() {
                 style={{
                   backgroundColor: "#0DA04C",
                   color: "#fff",
-                  padding: "16px 32px",
+                  padding: isMobile ? "14px 28px" : "16px 32px",
                   borderRadius: "25px",
                   textDecoration: "none",
-                  fontSize: "16px",
+                  fontSize: isMobile ? "14px" : "16px",
                   fontWeight: "600",
                   transition: "transform 0.2s ease",
+                  minWidth: isMobile ? "200px" : "auto",
+                  textAlign: "center",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
@@ -105,12 +127,14 @@ export default function Footer() {
                 style={{
                   backgroundColor: "white",
                   color: "#0DA04C",
-                  padding: "16px 32px",
+                  padding: isMobile ? "14px 28px" : "16px 32px",
                   borderRadius: "25px",
                   textDecoration: "none",
-                  fontSize: "16px",
+                  fontSize: isMobile ? "14px" : "16px",
                   fontWeight: "600",
                   transition: "transform 0.2s ease",
+                  minWidth: isMobile ? "200px" : "auto",
+                  textAlign: "center",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
@@ -129,24 +153,31 @@ export default function Footer() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "64px",
-            marginBottom: "48px",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
+            gap: isMobile ? "32px" : "64px",
+            marginBottom: isMobile ? "32px" : "48px",
           }}
         >
           {/* Logo and Description */}
-          <div>
+          <div style={{ textAlign: isMobile ? "center" : "left" }}>
             <Link
               href="/"
               style={{
                 display: "flex",
                 alignItems: "center",
+                justifyContent: isMobile ? "center" : "flex-start",
                 gap: "12px",
                 textDecoration: "none",
                 marginBottom: "24px",
               }}
             >
-              <NgmLogo style={{ width: "90px", height: "130px" }} />
+              {/* <NgmLogo style={{ width: "90px", height: "130px" }} /> */}
+              <Image
+                src={NgmConfLogoBlue}
+                alt="Ngm Logo"
+                width={isMobile ? 100 : 140}
+                height={isMobile ? 72 : 100}
+              />
             </Link>
 
             <p
@@ -157,10 +188,16 @@ export default function Footer() {
                 marginBottom: "24px",
               }}
             >
-              Join these discussions for just 7500.{" "}
+              BOLD Ideas, Fearless Execution.{" "}
             </p>
 
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "12px",
+                justifyContent: isMobile ? "center" : "flex-start",
+              }}
+            >
               {[Facebook, Linkedin, Instagram, Twitter].map((Icon, index) => (
                 <a
                   key={index}
@@ -194,7 +231,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div style={{ textAlign: isMobile ? "center" : "left" }}>
             <h3
               style={{
                 fontSize: "20px",
@@ -231,48 +268,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Utility Pages */}
-          {/* <div>
-            <h3
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                color: "rgb(15 25 144 / 1)",
-                marginBottom: "24px",
-              }}
-            >
-              Utility Pages
-            </h3>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-            >
-              {["Mentors", "Board Of Trustees", "Event Timeline"].map(
-                (link) => (
-                  <Link
-                    key={link}
-                    href="#"
-                    style={{
-                      color: "#666",
-                      textDecoration: "none",
-                      fontSize: "16px",
-                      transition: "color 0.2s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "rgb(15 25 144 / 1)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "#666";
-                    }}
-                  >
-                    {link}
-                  </Link>
-                )
-              )}
-            </div>
-          </div> */}
-
           {/* Newsletter */}
-          <div>
+          <div style={{ textAlign: isMobile ? "center" : "left" }}>
             <h3
               style={{
                 fontSize: "20px",
@@ -303,7 +300,7 @@ export default function Footer() {
                 border: "none",
                 padding: "12px 24px",
                 borderRadius: "25px",
-                fontSize: "16px",
+                fontSize: isMobile ? "14px" : "16px",
                 fontWeight: "600",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
@@ -311,6 +308,9 @@ export default function Footer() {
                 justifyContent: "center",
                 alignItems: "center",
                 gap: "8px",
+                width: isMobile ? "100%" : "auto",
+                maxWidth: isMobile ? "250px" : "none",
+                margin: isMobile ? "0 auto" : "0",
               }}
             >
               Subscribe
@@ -323,11 +323,17 @@ export default function Footer() {
         <div
           style={{
             borderTop: "1px solid #e5e5e5",
-            paddingTop: "32px",
+            paddingTop: isMobile ? "24px" : "32px",
             textAlign: "center",
           }}
         >
-          <p style={{ fontSize: "16px", color: "#666", margin: 0 }}>
+          <p
+            style={{
+              fontSize: isMobile ? "14px" : "16px",
+              color: "#666",
+              margin: 0,
+            }}
+          >
             <span style={{ fontWeight: "600" }}>
               Design & Developed by The NGM Technical Team.
             </span>

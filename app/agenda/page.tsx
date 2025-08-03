@@ -2,8 +2,25 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function AgendaPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Add event listener for resize
+    window.addEventListener("resize", checkIsMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
   const scheduleData = [
     {
       time: "9:00 AM",
@@ -44,7 +61,7 @@ export default function AgendaPage() {
       style={{
         backgroundColor: "#fff",
         minHeight: "100vh",
-        padding: "80px 24px",
+        padding: isMobile ? "60px 16px 40px" : "80px 24px",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -52,14 +69,14 @@ export default function AgendaPage() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ marginBottom: "64px" }}
+          style={{ marginBottom: isMobile ? "40px" : "64px" }}
         >
           <h1
             style={{
-              fontSize: "72px",
+              fontSize: isMobile ? "40px" : "72px",
               fontWeight: "bold",
               color: "#0DA04C",
-              marginBottom: "32px",
+              marginBottom: isMobile ? "24px" : "32px",
             }}
           >
             Schedule
@@ -68,31 +85,37 @@ export default function AgendaPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
               gap: "2px",
-              marginBottom: "48px",
+              marginBottom: isMobile ? "32px" : "48px",
             }}
           >
             <div
               style={{
                 backgroundColor: "#f8f9fa",
-                padding: "24px",
+                padding: isMobile ? "20px" : "24px",
                 textAlign: "center",
               }}
             >
               <h3
                 style={{
-                  fontSize: "24px",
+                  fontSize: isMobile ? "20px" : "24px",
                   fontWeight: "bold",
                   color: "#0DA04C",
                   margin: 0,
                 }}
               >
-                DAY 01
+                October 4, 2025
               </h3>
-              <p style={{ color: "#666", margin: "8px 0 0 0" }}>
+              {/* <p
+                style={{
+                  color: "#666",
+                  margin: "8px 0 0 0",
+                  fontSize: isMobile ? "14px" : "16px",
+                }}
+              >
                 12 October - Sunday
-              </p>
+              </p> */}
             </div>
             {/* <div
               style={{
@@ -118,7 +141,13 @@ export default function AgendaPage() {
           </div>
         </motion.div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: isMobile ? "12px" : "2px",
+          }}
+        >
           {scheduleData.map((item, index) => (
             <motion.div
               key={index}
@@ -129,17 +158,18 @@ export default function AgendaPage() {
               style={{
                 backgroundColor: "#0DA04C",
                 border: "1px solid rgba(196, 248, 42, 0.3)",
-                padding: "32px",
-                display: "grid",
-                gridTemplateColumns: "150px 1fr auto",
-                alignItems: "center",
-                gap: "32px",
+                padding: isMobile ? "20px" : "32px",
+                display: isMobile ? "flex" : "grid",
+                flexDirection: isMobile ? "column" : undefined,
+                gridTemplateColumns: isMobile ? undefined : "150px 1fr auto",
+                alignItems: isMobile ? "flex-start" : "center",
+                gap: isMobile ? "16px" : "32px",
               }}
             >
               <div>
                 <div
                   style={{
-                    fontSize: "24px",
+                    fontSize: isMobile ? "20px" : "24px",
                     fontWeight: "bold",
                     color: "white",
                   }}
@@ -151,7 +181,7 @@ export default function AgendaPage() {
               <div>
                 <h3
                   style={{
-                    fontSize: "24px",
+                    fontSize: isMobile ? "20px" : "24px",
                     fontWeight: "bold",
                     color: "#fff",
                     margin: "0 0 8px 0",
@@ -163,7 +193,7 @@ export default function AgendaPage() {
                   style={{
                     color: "rgba(255, 255, 255, 0.8)",
                     margin: 0,
-                    fontSize: "16px",
+                    fontSize: isMobile ? "14px" : "16px",
                   }}
                 >
                   {item.description}
@@ -172,19 +202,24 @@ export default function AgendaPage() {
 
               {item.speaker && (
                 <div
-                  style={{ display: "flex", alignItems: "center", gap: "16px" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: isMobile ? "12px" : "16px",
+                    flexDirection: isMobile ? "row" : "row",
+                  }}
                 >
                   <Image
                     src={item.speaker.image || "/placeholder.svg"}
                     alt={item.speaker.name}
-                    width={60}
-                    height={60}
+                    width={isMobile ? 50 : 60}
+                    height={isMobile ? 50 : 60}
                     style={{ borderRadius: "50%" }}
                   />
                   <div>
                     <div
                       style={{
-                        fontSize: "18px",
+                        fontSize: isMobile ? "16px" : "18px",
                         fontWeight: "bold",
                         color: "white",
                       }}
@@ -193,7 +228,7 @@ export default function AgendaPage() {
                     </div>
                     <div
                       style={{
-                        fontSize: "14px",
+                        fontSize: isMobile ? "12px" : "14px",
                         color: "rgba(255, 255, 255, 0.8)",
                       }}
                     >

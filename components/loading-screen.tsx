@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import NgmLogo from "./ngm-logo";
+import NgmConfLogo from "@/assets/ngm-conf-logo.png";
+import Image from "next/image";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -76,7 +77,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         >
           NGM Conference
         </h1> */}
-        <NgmLogo style={{ width: "90px", height: "160px" }} isLight />
+        <Image src={NgmConfLogo} alt="NGM Conf Logo" width={140} height={100} />
       </motion.div>
     </motion.div>
   );

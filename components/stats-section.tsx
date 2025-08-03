@@ -6,37 +6,26 @@ import Link from "next/link";
 
 export default function StatsSection() {
   const stats = [
-    { icon: Mic, number: "20", label: "SPEAKER" },
-    { icon: Clock, number: "72", label: "Hours" },
-    { icon: Users, number: "10", label: "Workshop" },
-    { icon: Calendar, number: "03", label: "Days" },
+    { icon: Mic, number: "20", label: "Speakers" },
+    { icon: Clock, number: "24", label: "Hours" },
+    { icon: Users, number: "10", label: "Workshops" },
+    { icon: Calendar, number: "October 4", label: "2025" },
   ];
 
   return (
-    <section style={{ backgroundColor: "#EAFFF3", padding: "80px 24px" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <section
+      className="py-12 px-6 md:py-20 md:px-6"
+      style={{ backgroundColor: "#EAFFF3" }}
+    >
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
-            gap: "32px",
-            backgroundColor: "white",
-            borderRadius: "16px",
-            overflow: "hidden",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-          }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 bg-white rounded-2xl overflow-hidden shadow-2xl"
         >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1px",
-            }}
-          >
+          <div className="lg:col-span-2 grid grid-cols-2 gap-0.5">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -44,47 +33,22 @@ export default function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                style={{
-                  padding: "48px 32px",
-                  textAlign: "center",
-                  backgroundColor: index % 2 === 0 ? "#f8f9fa" : "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "16px",
-                }}
+                className={`p-6 md:p-8 lg:p-12 text-center flex flex-col items-center gap-4 ${
+                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                }`}
               >
-                <div
-                  style={{
-                    width: "64px",
-                    height: "64px",
-                    borderRadius: "50%",
-                    border: "2px solid #0DA04C",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <stat.icon size={24} color="#0DA04C" />
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-[#0DA04C] flex items-center justify-center">
+                  <stat.icon
+                    size={20}
+                    className="md:w-6 md:h-6"
+                    color="#0DA04C"
+                  />
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: "36px",
-                      fontWeight: "bold",
-                      color: "#0DA04C",
-                      marginBottom: "4px",
-                    }}
-                  >
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0DA04C] mb-1">
                     {stat.number}
                   </div>
-                  <div
-                    style={{
-                      fontSize: "16px",
-                      color: "#666",
-                      fontWeight: "600",
-                    }}
-                  >
+                  <div className="text-sm md:text-base text-gray-600 font-semibold">
                     {stat.label}
                   </div>
                 </div>
@@ -92,44 +56,13 @@ export default function StatsSection() {
             ))}
           </div>
 
-          <div
-            style={{
-              backgroundColor: "rgb(15 25 144 / 1)",
-              padding: "48px 32px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              gap: "24px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "32px",
-                fontWeight: "bold",
-                color: "white",
-                lineHeight: "1.2",
-                margin: 0,
-              }}
-            >
-              Welcome to the greatest Digital conference 2023
+          <div className="bg-[rgb(15,25,144)] p-6 md:p-8 lg:p-12 flex flex-col justify-center gap-6">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight m-0">
+              Welcome to the greatest Digital conference 2025
             </h2>
 
-            <div
-              className="py-6 px-[21.45px] bg-[#FFFFFF26] border-[2.34px] border-[#FFFFFF33] rounded-lg"
-              // style={{
-              //   backgroundColor: "#0DA04C",
-              //   padding: "24px",
-              //   borderRadius: "12px",
-              // }}
-            >
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "#fff",
-                  lineHeight: "1.6",
-                  margin: "0 0 20px 0",
-                }}
-              >
+            <div className="py-4 md:py-6 px-4 md:px-[21.45px] bg-[#FFFFFF26] border-2 md:border-[2.34px] border-[#FFFFFF33] rounded-lg">
+              <p className="text-sm md:text-base text-white leading-relaxed mb-4 md:mb-5">
                 Join these discussions for just 7500.
               </p>
 
@@ -137,18 +70,7 @@ export default function StatsSection() {
                 href="https://bitooqoh.com/explore/ngm-conf-4.0"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  backgroundColor: "white",
-                  color: "#0DA04C",
-                  padding: "12px 24px",
-                  borderRadius: "25px",
-                  textDecoration: "none",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
+                className="bg-white text-[#0DA04C] py-2 md:py-3 px-4 md:px-6 rounded-full no-underline text-sm md:text-base font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors"
               >
                 Learn More →
               </Link>

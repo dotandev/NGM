@@ -4,64 +4,77 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import image from "@/public/next.svg";
+import idris from "@/assets/speakers/idris.png";
+import olabimpe from "@/assets/speakers/olabimpe.png";
+import bashir from "@/assets/speakers/bashir-koledoye.png";
+import rashidat from "@/assets/speakers/rashidat-adebisi.png";
+import sarwi from "@/assets/speakers/sarwi-rahaman.png";
 
 export default function SpeakersPage() {
   const speakers = [
     {
-      id: "ameer",
-      name: "Prof. Isa Alli Pantami",
-      role: "Fmr. Minister of Communications & Digital Economy",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
+      id: "idris-ayodeji-bello",
+      name: "Idris Ayodeji Bello",
+      role: "Founding Partner at LoftyInc Capital",
+      image: idris,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/belloidris/",
+      },
     },
     {
-      id: "ameerah",
-      name: "Abdulrahman Jogbojogbo",
-      role: "CEO, GoLemon",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
+      id: "olabimpe-afolabi",
+      name: "Mrs Olabimpe Afolabi",
+      role: "Partner, Internal Audit, Governance, Risk &amp; Compliance Services, KPMG",
+      image: olabimpe,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/olabimpe-afolabi-b45749a/",
+      },
     },
     {
-      id: "student",
-      name: "Tomi Davies",
-      role: "Serial Entrepreneur & VC Investor",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
+      id: "bashir-koledoye",
+      name: "Bashir Koledoye",
+      role: "Managing Director at Dharmattan Nigeria Limited",
+      image: bashir,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/bashir-koledoye-7a95074/",
+      },
     },
     {
-      id: "Grand Meentor",
-      name: "Engr. Naasir Giwa",
-      role: "Grand Meentor",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
+      id: "rashidat-adebisi",
+      name: "Mrs Rashidat Adebisi",
+      role: "Chief Client Officer at AXA Mansard",
+      image: rashidat,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/rashidata2604/",
+      },
     },
     {
-      id: "mike-davis",
-      name: "Yemi Faseun",
-      role: "Product Manager",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
+      id: "sarwi-rahaman",
+      name: "Sarwi Rahaman",
+      role: "Head of Public Sector Sales - Enterprise Business at Airtel Networks Limited (Nigeria)",
+      image: sarwi,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/sarwi-rahaman-4919105/",
+      },
     },
-    {
-      id: "wade-warren",
-      name: "Adebayo Salami",
-      role: "Entrepreneur",
-      image: "/placeholder.svg?height=400&width=400",
-      social: { behance: "#", linkedin: "#" },
-    },
+    // {
+    //   id: "wade-warren",
+    //   name: "Adebayo Salami",
+    //   role: "Entrepreneur",
+    //   image: "/placeholder.svg?height=400&width=400",
+    //   social: { behance: "#", linkedin: "#" },
+    // },
   ];
 
   return (
     <main>
       {/* Hero Section */}
-      <section
-        style={{
-          backgroundColor: "rgb(15 25 144 / 1)",
-          padding: "120px 24px 80px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <section className="bg-[rgb(15_25_144_/_1)] pt-20 pb-12 md:pt-28 md:pb-20 px-4 md:px-6 relative overflow-hidden">
         {/* Background Pattern */}
         <div
           style={{
@@ -75,25 +88,12 @@ export default function SpeakersPage() {
           }}
         />
 
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            textAlign: "center",
-            position: "relative",
-          }}
-        >
+        <div className="max-w-7xl mx-auto text-center relative">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            style={{
-              fontSize: "72px",
-              fontWeight: "bold",
-              color: "#EAFFF3",
-              marginBottom: "16px",
-              lineHeight: "1.1",
-            }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#EAFFF3] mb-4 leading-tight"
           >
             Speakers
           </motion.h1>
@@ -102,40 +102,24 @@ export default function SpeakersPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              fontSize: "16px",
-              color: "rgba(255, 255, 255, 0.8)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
+            className="text-sm md:text-base text-white/80 flex items-center justify-center gap-2"
           >
             <Link
               href="/"
-              style={{
-                color: "rgba(255, 255, 255, 0.8)",
-                textDecoration: "none",
-              }}
+              className="text-white/80 hover:text-white transition-colors"
             >
               Home
             </Link>
             <span>/</span>
-            <span style={{ color: "white" }}>Speakers</span>
+            <span className="text-white">Speakers</span>
           </motion.div>
         </div>
       </section>
 
       {/* Speakers Grid */}
-      <section style={{ backgroundColor: "#EAFFF3", padding: "80px 24px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "32px",
-            }}
-          >
+      <section className="bg-[#EAFFF3] py-12 md:py-20 px-4 md:px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {speakers.map((speaker, index) => (
               <motion.div
                 key={speaker.id}
@@ -143,111 +127,31 @@ export default function SpeakersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                style={{ position: "relative" }}
+                className="relative"
               >
                 {/* Speaker Image */}
-                <div
-                  style={{
-                    position: "relative",
-                    marginBottom: "16px",
-                    overflow: "hidden",
-                    borderRadius: "8px",
-                  }}
-                >
+                <div className="relative mb-4 overflow-hidden rounded-lg">
                   <Image
-                    // src={speaker.image || "/placeholder.svg"}
-                    src={image}
+                    src={speaker.image}
                     alt={speaker.name}
                     width={400}
                     height={400}
-                    style={{
-                      width: "100%",
-                      height: "400px",
-                      objectFit: "cover",
-                      filter: "grayscale(100%)",
-                      transition: "all 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.filter = "grayscale(0%)";
-                      e.currentTarget.style.transform = "scale(1.05)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.filter = "grayscale(100%)";
-                      e.currentTarget.style.transform = "scale(1)";
-                    }}
+                    className="w-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-in-out"
                   />
-
-                  {/* Hover Overlay */}
-                  {/* Will be a modal. No need to individual speaker pages */}
-                  <button
-                    // href={`/speakers/${speaker.id}`}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundColor: "rgb(15 25 144 / 1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
-                      textDecoration: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = "1";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = "0";
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: "white",
-                        fontSize: "18px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      View Profile
-                    </span>
-                  </button>
                 </div>
 
                 {/* Speaker Info */}
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    padding: "24px",
-                    borderRadius: "0 0 8px 8px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div>
-                    <h3
-                      style={{
-                        fontSize: "20px",
-                        fontWeight: "bold",
-                        color: "rgb(15 25 144 / 1)",
-                        margin: "0 0 4px 0",
-                      }}
-                    >
+                <div className="bg-white p-4 md:p-6 rounded-b-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg md:text-xl font-bold text-[rgb(15_25_144_/_1)] mb-1">
                       {speaker.name}
                     </h3>
-                    <p
-                      style={{
-                        fontSize: "16px",
-                        color: "#666",
-                        margin: 0,
-                      }}
-                    >
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                       {speaker.role}
                     </p>
                   </div>
 
-                  <div style={{ display: "flex", gap: "8px" }}>
+                  <div className="flex gap-2 shrink-0">
                     {/* <a
                       href={speaker.social.behance}
                       style={{
@@ -281,23 +185,9 @@ export default function SpeakersPage() {
 
                     <a
                       href={speaker.social.linkedin}
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        backgroundColor: "rgb(15 25 144 / 1)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textDecoration: "none",
-                        transition: "transform 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-2px)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "translateY(0)";
-                      }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 rounded-full bg-[rgb(15_25_144_/_1)] flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
                     >
                       <svg
                         width="16"

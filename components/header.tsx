@@ -1,163 +1,132 @@
 "use client";
 
-// @typescript-eslint/no-unused-expressions
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ShoppingCart,
-  // , ChevronDown
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import NgmLogo from "./ngm-logo";
+import Image from "next/image";
+import NgmConfLogo from "@/assets/ngm-conf-logo.png";
 
 export default function Header() {
-  const [isHomeOpen, setIsHomeOpen] = useState(false);
-  // const [isPagesOpen, setIsPagesOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  {
-    isHomeOpen;
-  }
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
   return (
     <>
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="py-2"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          // backgroundColor: "#0DA04C",
-          backgroundColor: "rgb(15 25 144 / 1)",
-          color: "white",
-          // padding: "16px 24px",
-          zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
+        className="fixed top-0 left-0 right-0 z-50 bg-[rgb(15_25_144_/_1)] py-3 md:py-4"
       >
-        <nav className="container mx-auto flex items-center justify-between">
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              textDecoration: "none",
-            }}
-          >
-            <NgmLogo isLight style={{ width: "40px", height: "70px" }} />
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src={NgmConfLogo}
+              alt="NGM Conf Logo"
+              width={100}
+              height={72}
+            />
           </Link>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              // style={{ position: "relative" }}
-              // onMouseEnter={() => setIsHomeOpen(true)}
-              // onMouseLeave={() => setIsHomeOpen(false)}
+              className="text-white hover:text-gray-200 transition-colors text-base"
             >
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "4px",
-                  color: "white",
-                  fontSize: "16px",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Home
-                {/* <ChevronDown size={16} /> */}
-              </button>
+              Home
             </Link>
-
             <Link
               href="/agenda"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                fontSize: "16px",
-              }}
+              className="text-white hover:text-gray-200 transition-colors text-base"
             >
               Agenda
             </Link>
-
             <Link
               href="/speakers"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                fontSize: "16px",
-              }}
+              className="text-white hover:text-gray-200 transition-colors text-base"
             >
               Speakers
             </Link>
-
-            {/* <div
-          style={{ position: "relative" }}
-          onMouseEnter={() => setIsPagesOpen(true)}
-          onMouseLeave={() => setIsPagesOpen(false)}
-        >
-          <button
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-              color: "white",
-              fontSize: "16px",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Pages <ChevronDown size={16} />
-          </button>
-        </div> */}
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          {/* Desktop Register Button */}
+          <div className="hidden md:flex items-center">
             <Link
               href="https://bitooqoh.com/explore/ngm-conf-4.0"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                backgroundColor: "#fff",
-                color: "rgb(15 25 144 / 1)",
-                padding: "12px 24px",
-                borderRadius: "25px",
-                textDecoration: "none",
-                fontSize: "16px",
-                fontWeight: "600",
-              }}
+              className="bg-white text-[rgb(15_25_144_/_1)] px-6 py-3 rounded-full text-base font-semibold hover:bg-gray-100 transition-colors"
             >
               Register Now
             </Link>
-
-            {/* <button
-            style={{
-              backgroundColor: "white",
-              border: "none",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
-
-          // onClick={}
-          >
-            <ShoppingCart size={20} color="#0DA04C" />
-          </button> */}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden text-white p-2"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </nav>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-[rgb(15_25_144_/_1)] border-t border-[rgb(15_25_144_/_1)]"
+            >
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  className="block text-white hover:text-gray-200 transition-colors text-lg py-2"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/agenda"
+                  onClick={closeMobileMenu}
+                  className="block text-white hover:text-gray-200 transition-colors text-lg py-2"
+                >
+                  Agenda
+                </Link>
+                <Link
+                  href="/speakers"
+                  onClick={closeMobileMenu}
+                  className="block text-white hover:text-gray-200 transition-colors text-lg py-2"
+                >
+                  Speakers
+                </Link>
+                <div className="pt-4">
+                  <Link
+                    href="https://bitooqoh.com/explore/ngm-conf-4.0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMobileMenu}
+                    className="block w-full bg-white text-[rgb(15_25_144_/_1)] px-6 py-3 rounded-full text-center text-base font-semibold hover:bg-gray-100 transition-colors"
+                  >
+                    Register Now
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
     </>
   );

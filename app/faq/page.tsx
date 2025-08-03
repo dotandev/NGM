@@ -2,10 +2,26 @@
 
 import { motion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FAQPage() {
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Add event listener for resize
+    window.addEventListener("resize", checkIsMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   const toggleItem = (index: number) => {
     setOpenItems((prev) =>
@@ -39,7 +55,7 @@ export default function FAQPage() {
       style={{
         backgroundColor: "#EAFFF3",
         minHeight: "100vh",
-        padding: "120px 24px 80px",
+        padding: isMobile ? "80px 16px 40px" : "120px 24px 80px",
       }}
     >
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
@@ -47,11 +63,14 @@ export default function FAQPage() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: "center", marginBottom: "64px" }}
+          style={{
+            textAlign: "center",
+            marginBottom: isMobile ? "40px" : "64px",
+          }}
         >
           <h1
             style={{
-              fontSize: "72px",
+              fontSize: isMobile ? "40px" : "72px",
               fontWeight: "bold",
               color: "rgb(15 25 144 / 1)",
               marginBottom: "16px",
@@ -62,7 +81,13 @@ export default function FAQPage() {
           </h1>
         </motion.div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: isMobile ? "12px" : "16px",
+          }}
+        >
           {faqItems.map((item, index) => (
             <motion.div
               key={index}
@@ -81,7 +106,7 @@ export default function FAQPage() {
                 onClick={() => toggleItem(index)}
                 style={{
                   width: "100%",
-                  padding: "32px",
+                  padding: isMobile ? "20px" : "32px",
                   backgroundColor: "transparent",
                   border: "none",
                   display: "flex",
@@ -93,10 +118,11 @@ export default function FAQPage() {
               >
                 <h3
                   style={{
-                    fontSize: "24px",
+                    fontSize: isMobile ? "18px" : "24px",
                     fontWeight: "bold",
                     color: "rgb(15 25 144 / 1)",
                     margin: 0,
+                    paddingRight: isMobile ? "12px" : "16px",
                   }}
                 >
                   {item.question}
@@ -104,8 +130,8 @@ export default function FAQPage() {
 
                 <div
                   style={{
-                    width: "32px",
-                    height: "32px",
+                    width: isMobile ? "28px" : "32px",
+                    height: isMobile ? "28px" : "32px",
                     borderRadius: "50%",
                     backgroundColor: openItems.includes(index)
                       ? "rgb(15 25 144 / 1)"
@@ -114,12 +140,16 @@ export default function FAQPage() {
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "all 0.3s ease",
+                    flexShrink: 0,
                   }}
                 >
                   {openItems.includes(index) ? (
-                    <Minus size={18} color="white" />
+                    <Minus size={isMobile ? 16 : 18} color="white" />
                   ) : (
-                    <Plus size={18} color="rgb(15 25 144 / 1)" />
+                    <Plus
+                      size={isMobile ? 16 : 18}
+                      color="rgb(15 25 144 / 1)"
+                    />
                   )}
                 </div>
               </button>
@@ -133,10 +163,12 @@ export default function FAQPage() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 style={{ overflow: "hidden" }}
               >
-                <div style={{ padding: "0 32px 32px" }}>
+                <div
+                  style={{ padding: isMobile ? "0 20px 20px" : "0 32px 32px" }}
+                >
                   <p
                     style={{
-                      fontSize: "16px",
+                      fontSize: isMobile ? "14px" : "16px",
                       color: "#666",
                       lineHeight: "1.6",
                       margin: 0,
