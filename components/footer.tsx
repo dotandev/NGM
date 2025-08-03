@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import NgmConfLogoBlue from "@/assets/ngm-conf-logo-blue.png";
+import NgmConfLogoBlue from "@/public/assets/ngm-conf-logo-blue.webp";
 
 export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);

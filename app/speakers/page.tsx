@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import image from "@/public/next.svg";
-import idris from "@/assets/speakers/idris.png";
-import olabimpe from "@/assets/speakers/olabimpe.png";
-import bashir from "@/assets/speakers/bashir-koledoye.png";
-import rashidat from "@/assets/speakers/rashidat-adebisi.png";
-import sarwi from "@/assets/speakers/sarwi-rahaman.png";
+import idris from "@/public/assets/speakers/idris.webp";
+import olabimpe from "@/public/assets/speakers/olabimpe.webp";
+import bashir from "@/public/assets/speakers/bashir-koledoye.webp";
+import rashidat from "@/public/assets/speakers/rashidat-adebisi.webp";
+import sarwi from "@/public/assets/speakers/sarwi-rahaman.webp";
 
 export default function SpeakersPage() {
   const speakers = [

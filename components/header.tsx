@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
-import NgmConfLogo from "@/assets/ngm-conf-logo.png";
+import NgmConfLogo from "@/public/assets/ngm-conf-logo.webp";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

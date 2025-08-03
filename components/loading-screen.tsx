@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import NgmConfLogo from "@/assets/ngm-conf-logo.png";
+import NgmConfLogo from "@/public/assets/ngm-conf-logo.webp";
 import Image from "next/image";
 
 interface LoadingScreenProps {
