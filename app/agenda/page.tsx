@@ -23,7 +23,7 @@ export default function AgendaPage() {
   }, []);
   const scheduleData = [
     {
-      time: "9:00 AM",
+      time: "7:00 AM",
       title: "Doors Open",
       description: "Join these discussions for just 7500.",
       speaker: null,

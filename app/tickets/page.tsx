@@ -9,11 +9,9 @@ export default function TicketsPage() {
     {
       name: "SINGLE",
       // price: "$65",
-      price: "7.5k Naira",
+      price: "N7,500",
       features: [
         "Free medical checkup",
-        "Idea Fair",
-        "Job Opportunities and Internships",
         "Expert-led sessions",
         "Networking opportunities",
         "Exclusive access to speakers",
@@ -29,8 +27,6 @@ export default function TicketsPage() {
       price: "N36,000",
       features: [
         "Free medical checkup",
-        "Idea Fair",
-        "Job Opportunities and Internships",
         "Expert-led sessions",
         "Networking opportunities",
         "Exclusive access to speakers",
@@ -42,11 +38,9 @@ export default function TicketsPage() {
     {
       name: "GROUP OF 10",
       // price: "$445",
-      price: "74k Naira",
+      price: "N74,000",
       features: [
         "Free medical checkup",
-        "Idea Fair",
-        "Job Opportunities and Internships",
         "Expert-led sessions",
         "Networking opportunities",
         "Exclusive access to speakers",

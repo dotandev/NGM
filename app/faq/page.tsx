@@ -37,11 +37,13 @@ export default function FAQPage() {
     },
     {
       question: "Is there any refund option?",
-      answer: "Unfortunately, no refund. Do Sadaqah.",
+      answer:
+        "No, we do not offer refunds for purchased tickets. This policy helps us maintain the event's financial stability and ensures we can commit to our vendors, speakers, and venue arrangements. However, you can transfer your ticket to someone else or consider attending our next event if you're unable to make it to this one. We appreciate your understanding in this matter.",
     },
     {
-      question: "What are the payment option?",
-      answer: "Cash, Transfer, E gbewa! But use our registration ink to pay",
+      question: "What are the payment options?",
+      answer:
+        "Cash, Bank Transfer, E-wallets (e.g., Flutterwave, Paystack, etc.)",
     },
     {
       question: "Any possibilities of schedule change?",

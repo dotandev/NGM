@@ -121,7 +121,7 @@ export default function Footer() {
               >
                 Register Now
               </Link>
-
+              {/* 
               <Link
                 href="/sponsor"
                 style={{
@@ -144,7 +144,7 @@ export default function Footer() {
                 }}
               >
                 Become Sponsor
-              </Link>
+              </Link> */}
             </div>
           </div>
         </motion.div>

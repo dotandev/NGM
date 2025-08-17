@@ -57,7 +57,7 @@ const NewCountdownTimer = () => {
   return (
     <div className="py-6 px-[21.45px] bg-[#FFFFFF26] border-[2.34px] border-[#FFFFFF33] flex flex-col gap-3 rounded-lg mb-8">
       <div className="whitespace-nowrap text-[12px] text-white leading-[13.06px]">
-        COUNTDOWN TO NGM CONFERENCE 3.0 🚀
+        COUNTDOWN TO NGM CONFERENCE 4.0 🚀
       </div>
 
       <div className="flex gap-[6px] items-center w-full">

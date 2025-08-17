@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export default function StatsSection() {
   const stats = [
-    { icon: Mic, number: "20", label: "Speakers" },
-    { icon: Clock, number: "24", label: "Hours" },
-    { icon: Users, number: "10", label: "Workshops" },
+    { icon: Mic, number: "15+", label: "Speakers" },
+    { icon: Clock, number: "7AM - 6PM", label: "" },
+    { icon: Users, number: "5", label: "Break-out Sessions" },
     { icon: Calendar, number: "October 4", label: "2025" },
   ];
 
