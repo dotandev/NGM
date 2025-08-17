@@ -188,7 +188,9 @@ export default function Footer() {
                 marginBottom: "24px",
               }}
             >
-              BOLD Ideas, Fearless Execution.{" "}
+              NGM (Nasir Giwa Mentorship) is a platform for students as well as
+              early and mid-stage career professionals who aspire to be leaders,
+              entrepreneurs and or business executives.{" "}
             </p>
 
             <div
