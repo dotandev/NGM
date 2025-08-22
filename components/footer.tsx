@@ -200,10 +200,23 @@ export default function Footer() {
                 justifyContent: isMobile ? "center" : "flex-start",
               }}
             >
-              {[Facebook, Linkedin, Instagram, Twitter].map((Icon, index) => (
+              {[
+                // { Icon: Facebook, url: 'https://facebook.com/ngmconfng' },
+                {
+                  Icon: Instagram,
+                  url: "https://www.instagram.com/ngm.platform",
+                },
+                {
+                  Icon: Linkedin,
+                  url: "https://www.linkedin.com/company/ngm-platform/posts/?feedView=all",
+                },
+                { Icon: Twitter, url: "https://x.com/NGM_Platform" },
+              ].map(({ Icon, url }, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     width: "40px",
                     height: "40px",

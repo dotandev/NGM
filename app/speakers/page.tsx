@@ -8,6 +8,10 @@ import olabimpe from "@/public/assets/speakers/olabimpe.webp";
 import bashir from "@/public/assets/speakers/bashir-koledoye.webp";
 import rashidat from "@/public/assets/speakers/rashidat-adebisi.webp";
 import sarwi from "@/public/assets/speakers/sarwi-rahaman.webp";
+import mohammed from "@/public/assets/speakers/mohammed-abdul-razaq.webp";
+import fiyin from "@/public/assets/speakers/fiyin-ogunlesi.webp";
+// import abimbola from "@/public/assets/speakers/dr-abimbola-abdurrahman-lekki.jpg";
+import deepankar from "@/public/assets/speakers/deepankar-cropped.webp";
 
 export default function SpeakersPage() {
   const speakers = [
@@ -52,6 +56,17 @@ export default function SpeakersPage() {
       },
     },
     {
+      id: "mohammed-abdul-razaq",
+      name: "Mohammed Abdul-Razaq",
+      role: "Senior Vice President Financial Advisory, Head of Capital Mobilization and Partnerships",
+      image: mohammed,
+      social: {
+        behance: "#",
+        linkedin:
+          "https://www.linkedin.com/in/mohammed-usman-abdul-razaq-57742ab7",
+      },
+    },
+    {
       id: "sarwi-rahaman",
       name: "Sarwi Rahaman",
       role: "Head of Public Sector Sales - Enterprise Business at Airtel Networks Limited (Nigeria)",
@@ -61,13 +76,26 @@ export default function SpeakersPage() {
         linkedin: "https://www.linkedin.com/in/sarwi-rahaman-4919105/",
       },
     },
-    // {
-    //   id: "wade-warren",
-    //   name: "Adebayo Salami",
-    //   role: "Entrepreneur",
-    //   image: "/placeholder.svg?height=400&width=400",
-    //   social: { behance: "#", linkedin: "#" },
-    // },
+    {
+      id: "deepankar-rustagi",
+      name: "Deepankar Rustagi",
+      role: "Founder & CEO, OmniRetail Technology",
+      image: deepankar,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/deepankarrustagi/",
+      },
+    },
+    {
+      id: "fiyin-ogunlesi",
+      name: "Fiyin Ogunlesi",
+      role: "Founder of RegalStone Capital",
+      image: fiyin,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/fiyinogunlesi",
+      },
+    },
   ];
 
   return (
@@ -135,7 +163,7 @@ export default function SpeakersPage() {
                     alt={speaker.name}
                     width={400}
                     height={400}
-                    className="w-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-in-out"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-in-out"
                   />
                 </div>
 

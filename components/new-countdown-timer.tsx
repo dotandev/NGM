@@ -19,8 +19,24 @@ const NewCountdownTimer = () => {
   const targetDate = new Date("2025-10-04T00:00:00+01:00").getTime(); // WAT (West Africa Time, UTC+1)
 
   const calculateTimeRemaining = (): TimeRemaining => {
-    const now = new Date().getTime();
-    const difference = targetDate - now;
+    // Get current time in UTC+1 (WAT)
+    const now = new Date();
+    const userTimezoneOffset = now.getTimezoneOffset();
+    const targetTimezoneOffset = -60; // UTC+1 in minutes
+    const timezoneAdjustment =
+      (userTimezoneOffset - targetTimezoneOffset) * 60 * 1000;
+
+    const adjustedNow = now.getTime() + timezoneAdjustment;
+    const difference = targetDate - adjustedNow;
+
+    // console.log("Dates: ", {
+    //   now,
+    //   userTimezoneOffset,
+    //   targetTimezoneOffset,
+    //   adjustedNow,
+    //   targetDate,
+    //   difference,
+    // });
 
     if (difference > 0) {
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
