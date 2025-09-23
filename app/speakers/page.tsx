@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Kola from "@/public/assets/speakers/kola-adesina.webp";
 import idris from "@/public/assets/speakers/idris.webp";
 import olabimpe from "@/public/assets/speakers/olabimpe.webp";
 import bashir from "@/public/assets/speakers/bashir-koledoye.webp";
@@ -15,6 +16,16 @@ import deepankar from "@/public/assets/speakers/deepankar-cropped.webp";
 
 export default function SpeakersPage() {
   const speakers = [
+    {
+      id: "kola-adesina",
+      name: "Kola Adesina",
+      role: "Group Managing Director at Sahara Group",
+      image: Kola,
+      social: {
+        behance: "#",
+        linkedin: "https://www.linkedin.com/in/kola-adesina-5b79134b",
+      },
+    },
     {
       id: "idris-ayodeji-bello",
       name: "Idris Ayodeji Bello",
@@ -96,6 +107,16 @@ export default function SpeakersPage() {
         linkedin: "https://www.linkedin.com/in/fiyinogunlesi",
       },
     },
+    // {
+    //   id: "abimbola-lekki",
+    //   name: "Dr Abimbola Abdurrahman-Lekki",
+    //   role: "Founder of RegalStone Capital",
+    //   image: fiyin,
+    //   social: {
+    //     behance: "#",
+    //     linkedin: "https://www.linkedin.com/in/fiyinogunlesi",
+    //   },
+    // },
   ];
 
   return (
@@ -146,7 +167,7 @@ export default function SpeakersPage() {
       {/* Speakers Grid */}
       <section className="bg-[#EAFFF3] py-12 md:py-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {speakers.map((speaker, index) => (
               <motion.div
                 key={speaker.id}
@@ -154,73 +175,43 @@ export default function SpeakersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="relative flex flex-col h-full"
               >
                 {/* Speaker Image */}
-                <div className="relative mb-4 overflow-hidden rounded-lg">
+                <div className="relative mb-4 overflow-hidden rounded-lg aspect-square w-full">
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-in-out"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-in-out"
                   />
                 </div>
 
                 {/* Speaker Info */}
-                <div className="bg-white p-4 md:p-6 rounded-b-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="bg-white p-4 sm:p-5 lg:p-6 rounded-b-lg flex gap-4 flex-grow">
                   <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-bold text-[rgb(15_25_144_/_1)] mb-1">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[rgb(15_25_144_/_1)] mb-1">
                       {speaker.name}
                     </h3>
-                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                    <p className="text-sm lg:text-base text-gray-600 leading-relaxed">
                       {speaker.role}
                     </p>
                   </div>
 
-                  <div className="flex gap-2 shrink-0">
-                    {/* <a
-                      href={speaker.social.behance}
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        backgroundColor: "#C4F82A",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textDecoration: "none",
-                        transition: "transform 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-2px)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "translateY(0)";
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: "bold",
-                          color: "#0DA04C",
-                        }}
-                      >
-                        Be
-                      </span>
-                    </a> */}
-
+                  <div className="flex gap-2">
                     <a
                       href={speaker.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-[rgb(15_25_144_/_1)] flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[rgb(15_25_144_/_1)] flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
                     >
                       <svg
-                        width="16"
-                        height="16"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="white"
+                        className="sm:w-4 sm:h-4"
                       >
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                       </svg>
