@@ -66,8 +66,9 @@ export default function TicketsPage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[rgb(15,25,144)] mb-4 md:mb-6 px-2">
             Get Your Tickets
           </h1>
-          <p className="text-base md:text-lg text-[rgb(15,25,144)] max-w-2xl mx-auto leading-relaxed px-4">
-            Join these discussions for just 7500.
+          <p className="text-base md:text-lg text-[rgb(15,25,144)] max-w-3xl mx-auto leading-relaxed px-4">
+            Join the NGM Conference 4.0 and connect with industry leaders and
+            innovators.
           </p>
         </motion.div>
 

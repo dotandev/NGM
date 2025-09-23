@@ -23,36 +23,120 @@ export default function AgendaPage() {
   }, []);
   const scheduleData = [
     {
-      time: "7:00 AM",
-      title: "Doors Open",
-      description: "Join these discussions for just 7500.",
+      time: {
+        start: "7:00 AM",
+        end: "9:45 AM",
+      },
+      title: "Pre-Event Medicals & Networking sessions",
+      description: null,
       speaker: null,
     },
     {
-      time: "9:30 AM",
-      title: "Intro & welcome",
-      description: "Join these discussions for just 7500.",
+      time: {
+        start: "10:00 AM",
+        end: "10:30 AM",
+      },
+      title: "Opening Ceremony & Welcome Address",
+      description: null,
       speaker: null,
     },
     {
-      time: "10:00 AM",
-      title: "Session 01 Title",
-      description: "Join these discussions for just 7500.",
+      time: {
+        start: "10:30 AM",
+        end: "10:55 AM",
+      },
+      title: "Keynote Address",
+      description: "Mr. Kola Adesina, GMD, Sahara Group",
       speaker: {
-        name: "Ameer",
-        role: "Product Designer",
-        image: "/placeholder.svg?height=60&width=60",
+        name: "Mr. Kola Adesina",
+        role: "GMD, Sahara Group",
+        image: null,
       },
     },
     {
-      time: "11:00 AM",
-      title: "Session 02 Title",
-      description: "Join these discussions for just 7500.",
-      speaker: {
-        name: "Ameerah",
-        role: "Developer",
-        image: "/placeholder.svg?height=60&width=60",
+      time: {
+        start: "11:00 AM",
+        end: "12:00 PM",
       },
+      title: "Panel Session",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "12:00 PM",
+        end: "1:00 PM",
+      },
+      title: "SME Pitch Competition",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "1:10 PM",
+        end: "1:20 PM",
+      },
+      title: "Distinguished Guest Speech",
+      description: "Senator Shuaib Afolabi Salisu",
+      speaker: {
+        name: "Senator Shuaib Afolabi Salisu",
+        role: null,
+        image: null,
+      },
+    },
+    {
+      time: {
+        start: "1:25 PM",
+        end: "1:40 PM",
+      },
+      title: "Announcement of SME Winners",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "1:40 PM",
+        end: "2:10 PM",
+      },
+      title: "Lunch & Networking Break",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "2:20 PM",
+        end: "3:00 PM",
+      },
+      title: "Fireside Chat",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "2:20 PM",
+        end: "3:50 PM",
+      },
+      title: "Idea Fair & Case Study Competitions Documentary and Awards",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "4:10 PM",
+        end: "4:30 PM",
+      },
+      title: "NGM Talk",
+      description: null,
+      speaker: null,
+    },
+    {
+      time: {
+        start: "4:30 PM",
+        end: "5:00 PM",
+      },
+      title: "Award Presentations & Closing Remarks",
+      description: null,
+      speaker: null,
     },
   ];
 
@@ -169,12 +253,13 @@ export default function AgendaPage() {
               <div>
                 <div
                   style={{
-                    fontSize: isMobile ? "20px" : "24px",
-                    fontWeight: "bold",
+                    fontSize: isMobile ? "16px" : "18px",
+                    fontWeight: "600",
                     color: "white",
                   }}
                 >
-                  {item.time}
+                  <p>{item.time.start}</p>
+                  <p>{item.time.end}</p>
                 </div>
               </div>
 
@@ -182,25 +267,27 @@ export default function AgendaPage() {
                 <h3
                   style={{
                     fontSize: isMobile ? "20px" : "24px",
-                    fontWeight: "bold",
+                    fontWeight: "600",
                     color: "#fff",
                     margin: "0 0 8px 0",
                   }}
                 >
                   {item.title}
                 </h3>
-                <p
-                  style={{
-                    color: "rgba(255, 255, 255, 0.8)",
-                    margin: 0,
-                    fontSize: isMobile ? "14px" : "16px",
-                  }}
-                >
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p
+                    style={{
+                      color: "rgba(255, 255, 255, 0.8)",
+                      margin: 0,
+                      fontSize: isMobile ? "14px" : "16px",
+                    }}
+                  >
+                    {item.description}
+                  </p>
+                )}
               </div>
 
-              {item.speaker && (
+              {/* {item.speaker && (
                 <div
                   style={{
                     display: "flex",
@@ -210,7 +297,10 @@ export default function AgendaPage() {
                   }}
                 >
                   <Image
-                    src={item.speaker.image || "/placeholder.svg"}
+                    src={
+                      item.speaker.image ||
+                      "/placeholder.svg?height=60&width=60"
+                    }
                     alt={item.speaker.name}
                     width={isMobile ? 50 : 60}
                     height={isMobile ? 50 : 60}
@@ -226,17 +316,19 @@ export default function AgendaPage() {
                     >
                       {item.speaker.name}
                     </div>
-                    <div
-                      style={{
-                        fontSize: isMobile ? "12px" : "14px",
-                        color: "rgba(255, 255, 255, 0.8)",
-                      }}
-                    >
-                      {item.speaker.role}
-                    </div>
+                    {item.speaker.role && (
+                      <div
+                        style={{
+                          fontSize: isMobile ? "12px" : "14px",
+                          color: "rgba(255, 255, 255, 0.8)",
+                        }}
+                      >
+                        {item.speaker.role}
+                      </div>
+                    )}
                   </div>
                 </div>
-              )}
+              )} */}
             </motion.div>
           ))}
         </div>

@@ -80,11 +80,12 @@ export default function Footer() {
                 fontSize: isMobile ? "16px" : "18px",
                 color: "rgba(255, 255, 255, 0.9)",
                 marginBottom: isMobile ? "24px" : "32px",
-                maxWidth: "500px",
+                maxWidth: "700px",
                 margin: isMobile ? "0 auto 24px" : "0 auto 32px",
               }}
             >
-              Join these discussions for just 7500.
+              Join the NGM Conference 4.0 and connect with industry leaders and
+              innovators.
             </p>
 
             <div
@@ -350,7 +351,7 @@ export default function Footer() {
             }}
           >
             <span style={{ fontWeight: "600" }}>
-              Design & Developed by The NGM Technical Team.
+              Designed & Developed by The NGM Technical Team.
             </span>
           </p>
         </div>
